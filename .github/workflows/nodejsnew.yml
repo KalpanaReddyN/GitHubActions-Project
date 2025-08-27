@@ -1,14 +1,8 @@
 name: Node.js CICD
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
 jobs:
   build:
-    runs-on: AgentRunner-1
+    runs-on: 
     
     steps:
       - name: Checkout code
