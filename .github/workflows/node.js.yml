@@ -19,14 +19,16 @@ jobs:
         with:
           node-version: '23'   # adjust version as per your Jenkins setup
 
-      - name: Frontend Compilation (Syntax Check)
+      - name: Lint Frontend # Install dependencies and lint frontend
         run: |
           cd client
-          find . -name "*.js" -exec node --check {} +
+          npm install
+          npm run lint
 
-      - name: Backend Compilation (Syntax Check)
+      - name: Lint Backend # Install dependencies and lint backend
         run: |
           cd api
-          find . -name "*.js" -exec node --check {} +
+          npm install
+          npm run lint
 
   
