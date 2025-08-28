@@ -31,4 +31,22 @@ jobs:
           npm install
           npm run lint
 
+  gitleaks-scan:
+    runs-on: Agent-1
+    needs: compile
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: GitLeaks Setup
+        uses: gitleaks/gitleaks-action@v2
+
+      - name: GitLeaks-Scan
+        run: |
+          gitleaks detect --source ./client --exit-code 1
+          gitleaks detect --source ./api --exit-code 1
+      
+  
+
   
